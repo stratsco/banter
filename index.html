@@ -44,9 +44,20 @@
             color: #0fa;
             text-decoration: underline;
         }
+
+        #timer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background-color: #00ffaa; /* Timer line color */
+            width: 0%;
+            transition: width 240s linear; /* Timer duration (4 minutes) */
+        }
     </style>
 </head>
 <body>
+    <div id="timer"></div>
     <div id="random-string">
         <p id="random-text"></p>
     </div>
@@ -57,6 +68,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             var strings = {{ site.data.strings | jsonify }};
             var randomTextElement = document.getElementById("random-text");
+            var timerElement = document.getElementById("timer");
 
             function updateRandomString() {
                 var randomIndex = Math.floor(Math.random() * strings.length);
@@ -68,11 +80,22 @@
                 setTimeout(function() {
                     updateRandomString();
                     randomTextElement.style.opacity = 1;
+                    resetTimer();
                 }, 2000); // Wait for the fade-out to complete before changing text and fading in
             }
 
+            function resetTimer() {
+                timerElement.style.transition = 'none';
+                timerElement.style.width = '0%';
+                setTimeout(function() {
+                    timerElement.style.transition = 'width 240s linear';
+                    timerElement.style.width = '100%';
+                }, 50); // Allow time for the transition reset to take effect
+            }
+
             updateRandomString(); // Initialize with the first random string
-            setInterval(fadeToNewString, 60000); // Update every 1 minute
+            resetTimer(); // Start the timer
+            setInterval(fadeToNewString, 240000); // Update every 4 minutes (240,000 milliseconds)
         });
     </script>
 </body>
