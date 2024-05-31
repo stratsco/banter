@@ -23,7 +23,9 @@
             font-size: 32px; /* Updated text size */
             color: #eee; /* Text color */
             text-align: center;
-            opacity: 1;
+        }
+
+        #random-text {
             transition: opacity 2s ease-in-out; /* Slower and more graceful transition */
         }
 
@@ -70,10 +72,8 @@
             }
 
             updateRandomString(); // Initialize with the first random string
-            setInterval(fadeToNewString, 6000); // Update every 1 minute
+            setInterval(fadeToNewString, 60000); // Update every 1 minute
         });
     </script>
 </body>
 </html>
-
-
