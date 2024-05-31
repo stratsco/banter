@@ -1,0 +1,40 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banter Strats by StratsCo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #111; /* Optional: Add a background color */
+        }
+
+        #random-string {
+            font-size: 24px;
+            color: #eee;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="random-string">
+        <p id="random-text"></p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var strings = {{ site.data.strings | jsonify }};
+            var randomIndex = Math.floor(Math.random() * strings.length);
+            document.getElementById("random-text").innerText = strings[randomIndex];
+        });
+    </script>
+</body>
+</html>
