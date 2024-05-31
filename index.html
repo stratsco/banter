@@ -1,33 +1,53 @@
 ---
 ---
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banter Strats by StratsCo</title>
+    <title>Banter by StratsCo</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #111; /* Optional: Add a background color */
+            background-color: #111; /* Background color of the page */
+            color: #eee; /* Text color */
         }
 
         #random-string {
-            font-size: 24px;
-            color: #eee;
+            font-size: 32px;
+            color: #eee; /* Text color */
             text-align: center;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #000;
+            color: #eee; /* Text color */
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px; /* Smaller text size */
+        }
+
+        .footer a {
+            color: #0fa;
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div id="random-string">
         <p id="random-text"></p>
+    </div>
+    <div class="footer">
+        Want live banter? Join The Tavern VOIP channel on <a href="https://discord.gg/VTnBbTpSsV" target="_blank">StratsCo Discord</a>.
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
