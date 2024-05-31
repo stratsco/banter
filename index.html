@@ -52,7 +52,7 @@
             height: 5px;
             background-color: #00ffaa; /* Timer line color */
             width: 0%;
-            transition: width 240s linear; /* Timer duration (4 minutes) */
+            transition: width 120s linear; /* Timer duration (2 minutes) */
         }
     </style>
 </head>
@@ -88,14 +88,14 @@
                 timerElement.style.transition = 'none';
                 timerElement.style.width = '0%';
                 setTimeout(function() {
-                    timerElement.style.transition = 'width 240s linear';
+                    timerElement.style.transition = 'width 120s linear';
                     timerElement.style.width = '100%';
                 }, 50); // Allow time for the transition reset to take effect
             }
 
             updateRandomString(); // Initialize with the first random string
             resetTimer(); // Start the timer
-            setInterval(fadeToNewString, 240000); // Update every 4 minutes (240,000 milliseconds)
+            setInterval(fadeToNewString, 120000); // Update every 2 minutes (120,000 milliseconds)
         });
     </script>
 </body>
