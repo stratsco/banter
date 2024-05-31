@@ -20,9 +20,11 @@
         }
 
         #random-string {
-            font-size: 32px;
+            font-size: 32px; /* Updated text size */
             color: #eee; /* Text color */
             text-align: center;
+            opacity: 1;
+            transition: opacity 2s ease-in-out; /* Slower and more graceful transition */
         }
 
         .footer {
@@ -52,9 +54,26 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var strings = {{ site.data.strings | jsonify }};
-            var randomIndex = Math.floor(Math.random() * strings.length);
-            document.getElementById("random-text").innerText = strings[randomIndex];
+            var randomTextElement = document.getElementById("random-text");
+
+            function updateRandomString() {
+                var randomIndex = Math.floor(Math.random() * strings.length);
+                randomTextElement.innerText = strings[randomIndex];
+            }
+
+            function fadeToNewString() {
+                randomTextElement.style.opacity = 0;
+                setTimeout(function() {
+                    updateRandomString();
+                    randomTextElement.style.opacity = 1;
+                }, 2000); // Wait for the fade-out to complete before changing text and fading in
+            }
+
+            updateRandomString(); // Initialize with the first random string
+            setInterval(fadeToNewString, 6000); // Update every 1 minute
         });
     </script>
 </body>
 </html>
+
+
